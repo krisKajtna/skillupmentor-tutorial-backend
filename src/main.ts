@@ -3,6 +3,7 @@ import { AppModule } from './modules/app.module'
 import { ValidationPipe } from '@nestjs/common'
 import cookieParser from 'cookie-parser'
 import express from 'express'
+import Logging from 'library/Logging'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -21,6 +22,6 @@ async function bootstrap() {
   const PORT = process.env.PORT || 8080
   await app.listen(PORT)
 
-  console.log(`Server started on port = ${await app.getUrl()}`)
+  Logging.log(`Server started on port = ${await app.getUrl()}`)
 }
 bootstrap()
