@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from '@nestjs/common'
+import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { User } from 'entities/user.entity'
 import { AbstractService } from 'modules/common/abstract.service'
@@ -48,11 +48,16 @@ export class UsersService extends AbstractService {
       // user.role = {...user.role, id: role_id}
     }
     try {
+      Object.entries(data).map((entry) => {
+        user[entry[0]] = entry[1]
+      })
+      return this.usersRepository.save(user)
     } catch (error) {
       Logging.error(error)
       if (error?.code === PostgresErrorCode.UniqueViolation) {
         throw new BadRequestException('user with that email already exists')
       }
+      throw new InternalServerErrorException('something went wrong wile updating user')
     }
   }
 }
