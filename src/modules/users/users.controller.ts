@@ -1,10 +1,12 @@
 import {
+  Body,
   ClassSerializerInterceptor,
   Controller,
   Get,
   HttpCode,
   HttpStatus,
   Param,
+  Post,
   Query,
   UseInterceptors,
 } from '@nestjs/common'
@@ -27,5 +29,11 @@ export class UsersController {
   @HttpCode(HttpStatus.OK)
   async findOne(@Param('id') id: string): Promise<User> {
     return this.userService.findById(id)
+  }
+
+  @Post()
+  @HttpCode(HttpStatus.CREATED)
+  async create(@Body() createUserDto: CreateUserDto): Promise<User> {
+    return this.userService.create(createUserDto)
   }
 }
