@@ -13,10 +13,4 @@ export interface RequestWithUser extends Request {
 
 export enum JwtType {
   ACCES_TOKEN = 'ACCES_TOKEN',
-  REFRESH_TOKEN = 'REFRESH_TOKEN',
-}
-
-export enum CookieType {
-  ACCES_TOKEN = 'ACCES_TOKEN',
-  REFRESH_TOKEN = 'REFRESH_TOKEN',
 }
