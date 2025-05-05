@@ -1,4 +1,24 @@
-import { Controller } from '@nestjs/common'
+import {
+  Body,
+  ClassSerializerInterceptor,
+  Controller,
+  HttpCode,
+  HttpStatus,
+  Post,
+  UseInterceptors,
+} from '@nestjs/common'
+import { AuthService } from './auth.service'
+import { Public } from 'decorators/public.decorator'
 
 @Controller('auth')
-export class AuthController {}
+@UseInterceptors(ClassSerializerInterceptor)
+export class AuthController {
+  constructor(private authService: AuthService) {}
+
+  @Public()
+  @Post('register')
+  @HttpCode(HttpStatus.CREATED)
+  async register(@Body() body: RegisterUserDto): Promise<User> {
+    return this.authService.register(body)
+  }
+}

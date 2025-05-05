@@ -8,6 +8,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 import { APP_GUARD } from '@nestjs/core'
 import { LocalStrategy } from './strategies/local.strategy'
 import { JwtStrategy } from './strategies/jwt.strategy'
+import { JwtAuthGuard } from './guards/jwt.guard'
 
 @Module({
   imports: [
