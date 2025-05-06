@@ -18,6 +18,7 @@ import { Response, Request } from 'express'
 import { User } from 'entities/user.entity'
 import { LocalAuthGuard } from './guards/local-auth.guard'
 import { RequestWithUser } from 'interfaces/auth.interface'
+import { JwtAuthGuard } from './guards/jwt.guard'
 
 @Controller('auth')
 @UseInterceptors(ClassSerializerInterceptor)
