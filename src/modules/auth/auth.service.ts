@@ -50,7 +50,7 @@ export class AuthService {
   }
 
   async login(userFromRequest: User, res: Response): Promise<void> {
-    const user = await this.usersService.findById(userFromRequest.id, ['role'])
+    const { password, ...user } = await this.usersService.findById(userFromRequest.id, ['role'])
     const accessToken = await this.generateToken(user.id, user.email, JwtType.ACCESS_TOKEN)
     const accessTokenCookie = await this.generateCookie(accessToken, CookieType.REFRESH_TOKEN)
 
@@ -77,7 +77,7 @@ export class AuthService {
   }
 
   async refreshTokens(req: Request): Promise<User> {
-    const user = await this.usersService.findBy({ refresh_token: req.cookies.refresh_token })
+    const user = await this.usersService.findBy({ refresh_token: req.cookies.refresh_token }, ['role'])
     if (!user) {
       throw new ForbiddenException()
     }
