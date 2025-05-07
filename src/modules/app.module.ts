@@ -23,12 +23,7 @@ import { JwtAuthGuard } from './auth/guards/jwt.guard'
     PermissionsModule,
   ],
   controllers: [],
-  providers: [
-    {
-      provide: APP_GUARD,
-      useClass: JwtAuthGuard,
-    },
-  ],
+  providers: [],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {

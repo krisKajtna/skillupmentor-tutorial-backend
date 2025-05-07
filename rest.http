@@ -6,7 +6,8 @@ POST http://localhost:8080/auth/register HTTP/1.1
 Content-Type: application/json
 
 {
-  	"email": "john@gmail.com",
+	"first_name": "john",
+  	"email": "kris@gmail.com",
   	"password": "John123!",
   	"confirm_password": "John123!"
 }
@@ -25,3 +26,6 @@ GET http://localhost:8080/auth/ HTTP/1.1
 
 ### POST /auth/signout
 POST http://localhost:8080/auth/signout HTTP/1.1
+
+### GET /users
+GET http://localhost:8080/users HTTP/1.1
