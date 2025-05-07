@@ -11,7 +11,9 @@ export class CreateUserDto {
   @IsEmail()
   email: string
 
-  //role_id:string
+  @IsNotEmpty()
+  role_id: string
+
   @IsNotEmpty()
   @Matches(/^(?=.*\d)[A-Za-z.\s_-]+[\W@#$%^&*+=:{}/\\|;:!?.'"()\[\]~]{6,}$/, {
     message: 'Geslo mora vsebovati vsaj eno številko, dovoljena posebna znamenja in biti dolgo vsaj 6 znakov.',
@@ -21,6 +23,4 @@ export class CreateUserDto {
   @IsNotEmpty()
   @Match(CreateUserDto, (field) => field.password, { message: 'Passwords do not match' })
   confirm_password: string
-
-  role_id: string
 }

@@ -12,6 +12,9 @@ export class UpdateUserDto {
   email?: string
 
   @IsOptional()
+  refresh_token?: string
+
+  @IsOptional()
   role_id?: string
 
   @IsOptional()

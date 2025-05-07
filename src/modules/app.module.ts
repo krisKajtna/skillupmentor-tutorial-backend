@@ -7,6 +7,8 @@ import { UsersModule } from './users/users.module'
 import { AuthModule } from './auth/auth.module'
 import { RolesModule } from './roles/roles.module'
 import { PermissionsModule } from './permissions/permissions.module'
+import { APP_GUARD } from '@nestjs/core'
+import { JwtAuthGuard } from './auth/guards/jwt.guard'
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -21,7 +23,12 @@ import { PermissionsModule } from './permissions/permissions.module'
     PermissionsModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_GUARD,
+      useClass: JwtAuthGuard,
+    },
+  ],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
