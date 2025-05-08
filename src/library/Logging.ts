@@ -2,7 +2,7 @@ import chalk from 'chalk'
 export default class Logging {
   public static log = (args: any) => this.info(args)
 
-  public static info = (args: any) =>
+  public static info = (args: any, token?: any) =>
     console.log(
       chalk.blue(`[${new Date().toLocaleString()}] [INFO]`, typeof args === 'string' ? chalk.blueBright(args) : args),
     )

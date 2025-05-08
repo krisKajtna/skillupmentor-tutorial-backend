@@ -22,6 +22,7 @@ import { UpdateUserDto } from './dto/update-user.dto'
 import { FileInterceptor } from '@nestjs/platform-express'
 import { isFileExtensionSafe, removeFile, saveImageToStorage } from 'helpers/imageStorage'
 import { join } from 'path'
+import { HasPermission } from 'decorators/has-permission.decorator'
 
 @Controller('users')
 @UseInterceptors(ClassSerializerInterceptor)
@@ -29,6 +30,7 @@ export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
   @Get()
+  @HasPermission('users')
   @HttpCode(HttpStatus.OK)
   async findAll(@Query('page') page: number): Promise<PaginatedResult> {
     return this.userService.paginate(page, ['role'])

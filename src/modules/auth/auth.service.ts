@@ -52,10 +52,11 @@ export class AuthService {
   async login(userFromRequest: User, res: Response): Promise<void> {
     const { password, ...user } = await this.usersService.findById(userFromRequest.id, ['role'])
     const accessToken = await this.generateToken(user.id, user.email, JwtType.ACCESS_TOKEN)
-    const accessTokenCookie = await this.generateCookie(accessToken, CookieType.REFRESH_TOKEN)
+    const refreshToken = await this.generateToken(user.id, user.email, JwtType.REFRESH_TOKEN)
 
-    const refreshToken = await this.generateToken(user.id, user.email, JwtType.ACCESS_TOKEN)
+    const accessTokenCookie = await this.generateCookie(accessToken, CookieType.ACCESS_TOKEN)
     const refreshTokenCookie = await this.generateCookie(refreshToken, CookieType.REFRESH_TOKEN)
+
     try {
       await this.updateRtHash(user.id, refreshToken)
       res.setHeader('Set-Cookie', [accessTokenCookie, refreshTokenCookie]).json({ ...user })
