@@ -10,6 +10,7 @@ import { PermissionsModule } from './permissions/permissions.module'
 import { APP_GUARD } from '@nestjs/core'
 import { JwtAuthGuard } from './auth/guards/jwt.guard'
 import { PermissionGuard } from './permissions/guards/permission.guard'
+import { ProductsModule } from './products/products.module'
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -22,6 +23,7 @@ import { PermissionGuard } from './permissions/guards/permission.guard'
     AuthModule,
     RolesModule,
     PermissionsModule,
+    ProductsModule,
   ],
   controllers: [],
   providers: [
