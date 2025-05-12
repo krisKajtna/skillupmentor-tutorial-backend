@@ -24,12 +24,16 @@ import { join } from 'path'
 import { CreateUserDto } from './dto/create-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { UsersService } from './users.service'
+import { ApiBadRequestResponse, ApiCreatedResponse, ApiTags } from '@nestjs/swagger'
 
+@ApiTags('users')
 @Controller('users')
 @UseInterceptors(ClassSerializerInterceptor)
 export class UsersController {
   constructor(private readonly userService: UsersService) {}
 
+  @ApiCreatedResponse({ description: 'list all users.' })
+  @ApiBadRequestResponse({ description: 'error for list of users' })
   @Get()
   @HasPermission('users')
   @HttpCode(HttpStatus.OK)
@@ -43,6 +47,8 @@ export class UsersController {
     return this.userService.findById(id)
   }
 
+  @ApiCreatedResponse({ description: 'create new user' })
+  @ApiBadRequestResponse({ description: 'error for creating a new user' })
   @Post()
   @HttpCode(HttpStatus.CREATED)
   async create(@Body() createUserDto: CreateUserDto): Promise<User> {
