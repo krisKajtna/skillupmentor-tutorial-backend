@@ -1,11 +1,10 @@
-import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
-import { AbstractService } from 'modules/common/abstract.service'
-import { Repository } from 'typeorm'
-import Logging from 'library/Logging'
 import { Order } from 'entities/order.entity'
 import { Response } from 'express'
 import { Parser } from 'json2csv'
+import { AbstractService } from 'modules/common/abstract.service'
+import { Repository } from 'typeorm'
 
 @Injectable()
 export class OrdersService extends AbstractService {

@@ -5,7 +5,6 @@ import { User } from 'entities/user.entity'
 import { AuthService } from 'modules/auth/auth.service'
 import { RolesService } from 'modules/roles/roles.service'
 import { UsersService } from 'modules/users/users.service'
-import { Observable } from 'rxjs'
 
 @Injectable()
 export class PermissionGuard implements CanActivate {

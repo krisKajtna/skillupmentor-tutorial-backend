@@ -3,8 +3,8 @@ import {
   registerDecorator,
   ValidationArguments,
   ValidationOptions,
-  ValidatorConstraintInterface,
   ValidatorConstraint,
+  ValidatorConstraintInterface,
 } from 'class-validator'
 
 export const Match = <T>(type: ClassConstructor<T>, property: (o: T) => any, validationOptions?: ValidationOptions) => {

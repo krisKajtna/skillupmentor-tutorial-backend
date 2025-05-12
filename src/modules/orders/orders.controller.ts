@@ -4,14 +4,15 @@ import {
   Get,
   HttpCode,
   HttpStatus,
-  UseInterceptors,
-  Query,
   Post,
+  Query,
   Res,
+  UseInterceptors,
 } from '@nestjs/common'
-import { OrdersService } from './orders.service'
-import { PaginatedResult } from 'interfaces/paginated-result.interface'
 import { Response } from 'express'
+import { PaginatedResult } from 'interfaces/paginated-result.interface'
+
+import { OrdersService } from './orders.service'
 
 @Controller('orders')
 @UseInterceptors(ClassSerializerInterceptor)

@@ -5,17 +5,18 @@ import {
   InternalServerErrorException,
   UnauthorizedException,
 } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
 import { JwtService } from '@nestjs/jwt'
 import { User } from 'entities/user.entity'
+import { Request, Response } from 'express'
+import { PostgresErrorCode } from 'helpers/postgresErrorCode.enum'
+import { CookieType, JwtType, TokenPayload } from 'interfaces/auth.interface'
+import { UserData } from 'interfaces/user.interface'
 import Logging from 'library/Logging'
 import { UsersService } from 'modules/users/users.service'
 import { compareHash, hash } from 'utils/bcrypt'
+
 import { RegisterUserDto } from './dto/register-user.dto'
-import { Request, Response } from 'express'
-import { ConfigService } from '@nestjs/config'
-import { CookieType, JwtType, TokenPayload } from 'interfaces/auth.interface'
-import { UserData } from 'interfaces/user.interface'
-import { PostgresErrorCode } from 'helpers/postgresErrorCode.enum'
 
 @Injectable()
 export class AuthService {
