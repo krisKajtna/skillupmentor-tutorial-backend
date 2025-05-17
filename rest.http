@@ -7,7 +7,7 @@ Content-Type: application/json
 
 {
 	"first_name": "john",
-  	"email": "kris12@gmail.com",
+  	"email": "kris123@gmail.com",
   	"password": "John123!",
   	"confirm_password": "John123!"
 }
@@ -17,12 +17,15 @@ POST http://localhost:8080/auth/login HTTP/1.1
 Content-Type: application/json
 
 {
-  	"email": "kris12@gmail.com",
-  	"password": "John123!"
+  	"email": "kris.kajtna@gmail.com",
+  	"password": "Kristjan8."
 }
 
 ### GET /auth
 GET http://localhost:8080/auth HTTP/1.1
+
+
+
 
 ### POST /auth/signout
 POST http://localhost:8080/auth/signout HTTP/1.1

@@ -147,12 +147,12 @@ export class AuthService {
 
       switch (type) {
         case CookieType.ACCESS_TOKEN:
-          cookie = `access_token=/${token}; HttpOnly; Path=/; Max-Age=${this.configService.get(
+          cookie = `access_token=${token}; HttpOnly; Path=/; Max-Age=${this.configService.get(
             'JWT_SECRET_EXPIRES',
           )}; SameSite=strict`
           break
         case CookieType.REFRESH_TOKEN:
-          cookie = `refresh_token=/${token}; HttpOnly; Path=/; Max-Age=${this.configService.get(
+          cookie = `refresh_token=${token}; HttpOnly; Path=/; Max-Age=${this.configService.get(
             'JWT_REFRESH_SECRET_EXPIRES',
           )}; SameSite=strict`
           break
