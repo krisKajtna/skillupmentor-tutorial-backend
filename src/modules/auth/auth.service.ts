@@ -191,7 +191,10 @@ export class AuthService {
   }
 
   async getUserId(request: Request): Promise<string> {
-    const user = request.user as User
+    const user = request.user as User | undefined
+    if (!user?.id) {
+      throw new UnauthorizedException('User is not authenticated.')
+    }
     return user.id
   }
 }
