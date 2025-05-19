@@ -22,8 +22,8 @@ export class CreateUserDto {
 
   @ApiProperty({ required: true })
   @IsNotEmpty()
-  @Matches(/^(?=.*\d)[A-Za-z.\s_-]+[\W@#$%^&*+=:{}/\\|;:!?.'"()\[\]~]{6,}$/, {
-    message: 'Geslo mora vsebovati vsaj eno številko, dovoljena posebna znamenja in biti dolgo vsaj 6 znakov.',
+  @Matches(/^(?=.*\d)(?=.*[A-Za-z])[A-Za-z\d@#$%^&*+=:;{}[\]\\|,.!?'"()\-_\s]{6,}$/, {
+    message: 'Geslo mora vsebovati vsaj eno številko, vsaj eno črko in biti dolgo vsaj 6 znakov.',
   })
   password: string
 
