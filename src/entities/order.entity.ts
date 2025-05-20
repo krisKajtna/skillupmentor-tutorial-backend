@@ -4,7 +4,7 @@ import { Column, Entity, OneToMany } from 'typeorm'
 import { Base } from './base.entity'
 import { OrderItem } from './order-item.entity'
 
-@Entity()
+@Entity('order')
 export class Order extends Base {
   @Column()
   @Exclude()
