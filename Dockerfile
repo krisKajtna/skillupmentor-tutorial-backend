@@ -1,4 +1,4 @@
-FROm node:22
+FROM node:22
 
 #Create app directory
 WORKDIR /kris/src/app
